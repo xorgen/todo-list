@@ -17,7 +17,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "todo-list",
+            "prefix": "app",
             "style": "kebab-case"
           }
         ]
