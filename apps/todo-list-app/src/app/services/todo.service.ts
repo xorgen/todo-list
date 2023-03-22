@@ -5,33 +5,57 @@ import { ITodo } from '../models/todo.model';
 	providedIn: 'root',
 })
 export class TodoService {
-	private todo: ITodo[] = [
+	private todoList: ITodo[] = [
 		{
 			id: 1,
-			state: false,
-			title: 'Go to sport',
+			isCompleted: false,
+			title: '1 Go to sport',
 		},
 		{
 			id: 2,
-			state: false,
-			title: 'Meditate',
+			isCompleted: false,
+			title: '2 Meditate',
 			description: 'Take a break for 20 minutes',
 		},
 		{
 			id: 3,
-			state: false,
-			title: 'Raid World of Warcraft',
+			isCompleted: false,
+			title: '3 Raid World of Warcraft',
 			description: 'Wednesday 20:00, tanking',
 		},
 		{
 			id: 4,
-			state: false,
-			title: 'Read a book',
+			isCompleted: false,
+			title: '4 Read a book',
 			description: 'Cracking the coding interview',
 		},
 	];
 
 	public getTodos(): ITodo[] {
-		return this.todo;
+		return this.todoList;
+	}
+
+	public moveActiveTaskToTop(id: number): void {
+		const index = this.todoList.findIndex((todo) => todo.id === id);
+		const activeTask = this.todoList.splice(index, 1)[0];
+		const lastActiveItemIndex = this.todoList.findIndex((todo) => todo.isCompleted === true) - 1;
+
+		if (lastActiveItemIndex < 0) {
+			this.todoList.unshift(activeTask);
+		} else {
+			this.todoList.splice(lastActiveItemIndex, 0, activeTask);
+		}
+	}
+
+	public moveCompletedTaskToBottom(id: number): void {
+		const index = this.todoList.findIndex((todo) => todo.id === id);
+		const completedTask = this.todoList.splice(index, 1)[0];
+		const firstCompletedItemIndex = this.todoList.findIndex((todo) => todo.isCompleted === true);
+
+		if (firstCompletedItemIndex === -1) {
+			this.todoList.push(completedTask);
+		} else {
+			this.todoList.splice(firstCompletedItemIndex, 0, completedTask);
+		}
 	}
 }

@@ -8,11 +8,15 @@ import { TodoService } from '../../services/todo.service';
 	styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-	public todo: ITodo[] = [];
+	public todoList: ITodo[] = [];
 
 	constructor(private _todo: TodoService) {}
 
 	ngOnInit(): void {
-		this.todo = this._todo.getTodos();
+		this.todoList = this._todo.getTodos();
+	}
+
+	public updateTaskPosition(todo: ITodo): void {
+		this._todo.moveCompletedTaskToBottom(todo.id);
 	}
 }
