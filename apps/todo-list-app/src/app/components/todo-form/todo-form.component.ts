@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -8,16 +8,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 	styleUrls: ['./todo-form.component.scss'],
 })
 export class TodoFormComponent {
-	public todoForm: FormGroup;
+	todoForm: FormGroup;
 
 	constructor(private _todoService: TodoService, private _formBuilder: FormBuilder) {
 		this.todoForm = this._formBuilder.group({
 			title: ['', Validators.required],
-			description: [''],
+			description: null,
 		});
 	}
 
+	public shouldShowTitleRequiredError(): boolean {
+		const title = this.todoForm.controls['title'];
+		return title.touched && title.hasError('required');
+	}
+
 	public addTodoItem(title: string, description: string): void {
+		if (this.todoForm.invalid) {
+			return;
+		}
 		this._todoService.addTodoItem(title, description);
 	}
 }

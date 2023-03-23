@@ -14,6 +14,19 @@ export class TodoService {
 		return this.getTodoList().pipe(map((todoList: ITodo[]) => todoList.find((todo) => todo.id === +id) as ITodo));
 	}
 
+	public addTodoItem(title: string, description: string): void {
+		const maxId = todoList.reduce((max, todo) => (todo.id > max ? todo.id : max), 0);
+		const newId = maxId + 1;
+		const newTodo: ITodo = {
+			id: newId,
+			title: title,
+			description: description,
+			isCompleted: false,
+		};
+		todoList.unshift(newTodo);
+		console.log('New item added with id:', newId);
+	}
+
 	public moveActiveTaskToTop(id: number): void {
 		const index = todoList.findIndex((todo) => todo.id === id);
 		const activeTask = todoList.splice(index, 1)[0];

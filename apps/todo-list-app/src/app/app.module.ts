@@ -18,9 +18,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
+import { TodoFormComponent } from './components/todo-form/todo-form.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-	declarations: [AppComponent, TodoListComponent, TodoDetailsComponent],
+	declarations: [AppComponent, TodoListComponent, TodoDetailsComponent, TodoFormComponent],
 	imports: [
 		BrowserModule,
 		RouterModule.forRoot(appRoutes),
@@ -34,6 +36,9 @@ import { TodoDetailsComponent } from './components/todo-details/todo-details.com
 		MatListModule,
 		FormsModule,
 		MatCheckboxModule,
+		ReactiveFormsModule,
+		MatFormFieldModule,
+		MatInputModule,
 	],
 	exports: [RouterModule],
 	providers: [],

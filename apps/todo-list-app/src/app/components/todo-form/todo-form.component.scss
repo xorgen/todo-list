@@ -1,9 +1,15 @@
-.example-form {
+.form {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
 }
 
-.example-full-width {
-    width: 100%;
+.form-field {
+    width: 100%
+}
+
+.button-row {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
 }
