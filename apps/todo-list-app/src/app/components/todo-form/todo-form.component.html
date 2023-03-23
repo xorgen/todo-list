@@ -1,6 +1,6 @@
 <div class="wrapper">
 	<div class="container">
-		<div class="header">ADD NEW TODO</div>
+		<div class="header">ADD A TASK</div>
 		<form
 			[formGroup]="todoForm"
 			(ngSubmit)="addTodoItem(todoForm.value.title, todoForm.value.description)"
@@ -9,27 +9,29 @@
 				class="title-required-error"
 				*ngIf="shouldShowTitleRequiredError()"
 			>
-				Title is required
+				*Title is required
 			</div>
-			<mat-form-field class="form-field">
-				<input
-					matInput
-					name="title"
-					formControlName="title"
-					type="text"
-					placeholder="Title"
-					required
-				/>
-			</mat-form-field>
-			<mat-form-field class="form-field">
-				<input
-					matInput
-					name="description"
-					formControlName="description"
-					type="text"
-					placeholder="Description"
-				/>
-			</mat-form-field>
+			<div class="form-container">
+				<mat-form-field class="form-field">
+					<input
+						matInput
+						name="title"
+						formControlName="title"
+						type="text"
+						placeholder="Title"
+						required
+					/>
+				</mat-form-field>
+				<mat-form-field class="form-field">
+					<input
+						matInput
+						name="description"
+						formControlName="description"
+						type="text"
+						placeholder="Description"
+					/>
+				</mat-form-field>
+			</div>
 			<mat-divider></mat-divider>
 			<div class="button-row">
 				<button

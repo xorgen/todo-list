@@ -4,7 +4,7 @@ export const todoList: ITodo[] = [
 	{
 		id: 1,
 		isCompleted: false,
-		title: 'Go to sport',
+		title: 'Go to sport | 2.pm',
 	},
 	{
 		id: 2,
