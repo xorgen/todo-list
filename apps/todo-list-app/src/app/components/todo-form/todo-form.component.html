@@ -1,0 +1,45 @@
+<div class="wrapper">
+	<div class="container">
+		<form
+			[formGroup]="todoForm"
+			(submit)="addTodoItem(todoForm.value.title, todoForm.value.description)"
+		>
+			<mat-form-field class="example-full-width">
+				<input
+					formControlName="title"
+					matInput
+					id="title"
+					placeholder="Title"
+					required
+				/>
+			</mat-form-field>
+			<mat-form-field class="example-full-width">
+				<input
+					formControlName="description"
+					matInput
+					id="description"
+					placeholder="Description"
+				/>
+			</mat-form-field>
+
+			<mat-divider></mat-divider>
+			<div class="example-button-row">
+				<button
+					mat-raised-button
+					color="accent"
+					[routerLink]="['/list']"
+				>
+					Retour
+				</button>
+				<button
+					mat-raised-button
+					color="primary"
+					type="submit"
+					[disabled]="todoForm.invalid"
+				>
+					Submit
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
