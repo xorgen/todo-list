@@ -5,22 +5,28 @@
 			[formGroup]="todoForm"
 			(ngSubmit)="addTodoItem(todoForm.value.title, todoForm.value.description)"
 		>
-			<div *ngIf="shouldShowTitleRequiredError()">Title is required</div>
+			<div
+				class="title-required-error"
+				*ngIf="shouldShowTitleRequiredError()"
+			>
+				Title is required
+			</div>
 			<mat-form-field class="form-field">
 				<input
 					matInput
+					name="title"
 					formControlName="title"
 					type="text"
-					id="title"
 					placeholder="Title"
 					required
 				/>
 			</mat-form-field>
 			<mat-form-field class="form-field">
 				<input
-					formControlName="description"
 					matInput
-					id="description"
+					name="description"
+					formControlName="description"
+					type="text"
 					placeholder="Description"
 				/>
 			</mat-form-field>
@@ -34,7 +40,6 @@
 					Retour
 				</button>
 				<button
-					#disabled
 					mat-raised-button
 					color="primary"
 					type="submit"
@@ -46,4 +51,3 @@
 		</form>
 	</div>
 </div>
-<div></div>

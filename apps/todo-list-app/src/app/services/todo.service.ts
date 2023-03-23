@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ITodo } from '../models/todo.model';
 import { todoList } from './mock-todos';
 @Injectable({
@@ -10,8 +10,8 @@ export class TodoService {
 		return of(todoList);
 	}
 
-	public getTodo(id: number | string) {
-		return this.getTodoList().pipe(map((todoList: ITodo[]) => todoList.find((todo) => todo.id === +id) as ITodo));
+	public getTodo(id: number): Observable<ITodo> {
+		return of(todoList.filter((todo) => todo.id === id)[0]);
 	}
 
 	public addTodoItem(title: string, description: string): void {
@@ -24,7 +24,6 @@ export class TodoService {
 			isCompleted: false,
 		};
 		todoList.unshift(newTodo);
-		console.log('New item added with id:', newId);
 	}
 
 	public moveActiveTaskToTop(id: number): void {
