@@ -1,12 +1,24 @@
-<ul>
-	<li *ngFor="let todo of todoList">
-		<div>
-			<input
-				type="checkbox"
-				[(ngModel)]="todo.isCompleted"
-				(click)="updateTaskPosition(todo)"
-			/>
-		</div>
-		<div [ngClass]="todo.isCompleted ? 'strike' : 'false'">{{ todo.title }}</div>
-	</li>
-</ul>
+<div class="wrapper">
+	<div class="container">
+		<div class="header">TODO-LIST</div>
+		<mat-list>
+			<mat-list-item
+				*ngFor="let todo of todoList$ | async"
+				class="list-item"
+			>
+				<mat-checkbox
+					[(ngModel)]="todo.isCompleted"
+					(change)="updateTaskPosition(todo)"
+				>
+					<span
+						[routerLink]="['/todo', todo.id]"
+						(click)="showTaskDetails(todo)"
+						[ngClass]="{ strike: todo.isCompleted }"
+					>
+						{{ todo.title }}
+					</span>
+				</mat-checkbox>
+			</mat-list-item>
+		</mat-list>
+	</div>
+</div>

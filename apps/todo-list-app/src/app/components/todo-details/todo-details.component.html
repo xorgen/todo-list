@@ -1,0 +1,20 @@
+<div class="wrapper">
+	<div class="container">
+		<div *ngIf="todo$ | async as todo">
+			<div class="header">{{ todo.title }}</div>
+			<div class="description-wrapper">
+				<p>{{ todo.description }}</p>
+			</div>
+			<mat-divider></mat-divider>
+			<div class="button-row">
+				<button
+					mat-raised-button
+					color="accent"
+					[routerLink]="['/list']"
+				>
+					Retour
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

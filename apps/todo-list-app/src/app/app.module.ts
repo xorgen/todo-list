@@ -13,23 +13,28 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
 
 @NgModule({
-	declarations: [AppComponent, TodoListComponent],
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(appRoutes),
-        BrowserAnimationsModule,
-        DragDropModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        FormsModule,
-    ],
+	declarations: [AppComponent, TodoListComponent, TodoDetailsComponent],
+	imports: [
+		BrowserModule,
+		RouterModule.forRoot(appRoutes),
+		BrowserAnimationsModule,
+		DragDropModule,
+		LayoutModule,
+		MatToolbarModule,
+		MatButtonModule,
+		MatSidenavModule,
+		MatIconModule,
+		MatListModule,
+		FormsModule,
+		MatCheckboxModule,
+	],
 	exports: [RouterModule],
 	providers: [],
 	bootstrap: [AppComponent],
