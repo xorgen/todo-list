@@ -6,7 +6,7 @@
 
 ## Development server
 
-Run `nx serve todo-list-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `npx nx serve todo-list-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
 # Context
